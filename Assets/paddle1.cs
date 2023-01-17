@@ -8,8 +8,9 @@ public class paddle1 : MonoBehaviour
     public KeyCode moveUp = KeyCode.W;
     public KeyCode moveDown = KeyCode.S;
     public float speed = 10.0f;
-    public float boundY = 4f;
+    public float boundY = 10f;
     private Rigidbody2D rb2d;
+    
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -32,9 +33,11 @@ public class paddle1 : MonoBehaviour
 
         var pos = transform.position;
         if (pos.y > boundY) {
+            Debug.Log("posY:" + pos.y + ", boundY:" + boundY);
             pos.y = boundY;
         }
         else if (pos.y < -boundY) {
+            Debug.Log("posY:" + pos.y + ", boundY:" + boundY);
             pos.y = -boundY;
         }
         transform.position = pos;
