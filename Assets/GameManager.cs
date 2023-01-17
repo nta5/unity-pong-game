@@ -17,17 +17,19 @@ public class GameManager : MonoBehaviour
     public static void Score (string wallID) {
         if (wallID == "RightWall")
         {
-            PlayerScore1++;
+            PlayerScore2++;
         } else
         {
-            PlayerScore2++;
+            PlayerScore1++;
         }
     }
     
     void OnGUI () {
         GUI.skin = layout;
-        GUI.Label(new Rect(Screen.width / 2 - 150 - 12, 20, 100, 100), "" + PlayerScore1);
-        GUI.Label(new Rect(Screen.width / 2 + 150 + 12, 20, 100, 100), "" + PlayerScore2);
+        GUI.Label(new Rect(Screen.width / 2 - 150 - 15, 15, 100, 100), "Player 1");
+        GUI.Label(new Rect(Screen.width / 2 - 150 - 15, 30, 100, 100), "" + PlayerScore1);
+        GUI.Label(new Rect(Screen.width / 2 + 150 + 15, 15, 100, 100), "Player 2");
+        GUI.Label(new Rect(Screen.width / 2 + 150 + 15, 30, 100, 100), "" + PlayerScore2);
 
         if (GUI.Button(new Rect(Screen.width / 2 - 60, 35, 120, 53), "RESTART"))
         {
