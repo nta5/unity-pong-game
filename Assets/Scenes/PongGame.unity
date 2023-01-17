@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 535108800}
   - component: {fileID: 535108801}
   m_Layer: 0
-  m_Name: AboveWall
+  m_Name: TopWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -800,7 +800,7 @@ GameObject:
   - component: {fileID: 1467659872}
   - component: {fileID: 1467659871}
   m_Layer: 0
-  m_Name: UnderWall
+  m_Name: BottomWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
