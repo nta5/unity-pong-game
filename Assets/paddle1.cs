@@ -8,7 +8,7 @@ public class paddle1 : MonoBehaviour
     public KeyCode moveUp = KeyCode.W;
     public KeyCode moveDown = KeyCode.S;
     public float speed = 10.0f;
-    public float boundY = 4f;
+    public float boundY = 10f;
     private Rigidbody2D rb2d;
     void Start()
     {
