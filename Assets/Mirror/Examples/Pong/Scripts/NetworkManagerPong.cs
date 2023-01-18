@@ -15,11 +15,7 @@ namespace Mirror.Examples.Pong
     {
         public Transform leftRacketSpawn;
         public Transform rightRacketSpawn;
-        GameObject ball;
-
-        public static int PlayerScore1 = 0;
-    public static int PlayerScore2 = 0;
-    public GUISkin layout;
+        static GameObject ball;
 
         public override void OnServerAddPlayer(NetworkConnectionToClient conn)
         {
@@ -45,40 +41,6 @@ namespace Mirror.Examples.Pong
             // call base functionality (actually destroys the player)
             base.OnServerDisconnect(conn);
         }
-    public static void Score (string wallID) {
-        if (wallID == "RightWall")
-        {
-            PlayerScore2++;
-        } else
-        {
-            PlayerScore1++;
-        }
-    }
-    
-    void OnGUI () {
-        GUI.skin = layout;
-        GUI.skin.label.fontSize = Screen.width / Screen.height * 15;
-        GUI.Label(new Rect(Screen.width / 2 - 150 - 15, 15, 100, 100), "Player 1");
-        GUI.Label(new Rect(Screen.width / 2 - 150 - 15, 30, 100, 100), "" + PlayerScore1);
-        GUI.Label(new Rect(Screen.width / 2 + 150 + 15, 15, 100, 100), "Player 2");
-        GUI.Label(new Rect(Screen.width / 2 + 150 + 15, 30, 100, 100), "" + PlayerScore2);
 
-        if (GUI.Button(new Rect(Screen.width / 2 - 60, 35, 120, 53), "RESTART"))
-        {
-            PlayerScore1 = 0;
-            PlayerScore2 = 0;
-            ball.SendMessage("RestartGame", 0.5f, SendMessageOptions.RequireReceiver);
-        }
-
-        if (PlayerScore1 == 5)
-        {
-            GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "PLAYER ONE WINS");
-            ball.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
-        } else if (PlayerScore2 == 5)
-        {
-            GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "PLAYER TWO WINS");
-            ball.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
-        }
-    }
     }
 }
