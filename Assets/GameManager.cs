@@ -1,10 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-using System.Net.Sockets;
-using System.Net;
-using System.Text;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,48 +9,19 @@ public class GameManager : MonoBehaviour
     public static int PlayerScore2 = 0;
     public GUISkin layout;
     GameObject theBall;
-
-    static IPAddress mcastAddress;
-    static int mcastPort;
-    static Socket mcastSocket;
-
     void Start()
     {
         theBall = GameObject.FindGameObjectWithTag("Ball");
     }
     
     public static void Score (string wallID) {
-        mcastAddress = IPAddress.Parse("230.0.0.1");
-        mcastPort = 11000;
-        IPEndPoint endPoint;
-
-        try
+        if (wallID == "RightWall")
         {
-            mcastSocket = new Socket(AddressFamily.InterNetwork,
-                           SocketType.Dgram,
-                           ProtocolType.Udp);
-
-            //Send multicast packets to the listener.
-            endPoint = new IPEndPoint(mcastAddress, mcastPort);
-            if (wallID == "RightWall")
-            {
-                PlayerScore2++;
-                mcastSocket.SendTo(ASCIIEncoding.ASCII.GetBytes("Player 2 Scored"), endPoint);
-            } else
-            {
-                PlayerScore1++;
-                mcastSocket.SendTo(ASCIIEncoding.ASCII.GetBytes("Player 1 Scored"), endPoint);
-            }
-            Debug.Log("Multicast data sent.....");
-        }
-        catch (Exception e)
+            PlayerScore2++;
+        } else
         {
-            Console.WriteLine("\n" + e.ToString());
+            PlayerScore1++;
         }
-
-        mcastSocket.Close();
-
-
     }
     
     void OnGUI () {
