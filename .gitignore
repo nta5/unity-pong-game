@@ -3,4 +3,8 @@
 /Temp
 /Library
 /UserSettings
-/webgl-build/*
+/Assets/Mirror
+/Assets/ScriptTemplates
+client
+/client_BurstDebugInformation_DoNotShip
+client.app/Contents

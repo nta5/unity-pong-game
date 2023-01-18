@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class paddle1 : MonoBehaviour
+public class paddle1 : NetworkBehaviour
 {
     // Start is called before the first frame update
     public KeyCode moveUp = KeyCode.W;
