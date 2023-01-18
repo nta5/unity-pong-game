@@ -54,7 +54,7 @@ public class paddle1 : MonoBehaviour
 
         var position = transform.position;
         if (Input.anyKeyDown) {
-            String msg = "Position: x = " + position.x + ", y = " + position.y;
+            String msg = gameObject.name + " - Position: x = " + position.x + ", y = " + position.y;
             mcastSocket.SendTo(ASCIIEncoding.ASCII.GetBytes(msg), endPoint);
         }
 
