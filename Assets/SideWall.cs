@@ -5,7 +5,6 @@ using Mirror.Examples.Pong;
 public class SideWall : MonoBehaviour {
 
     void OnTriggerEnter2D (Collider2D hitInfo) {
-        Debug.Log("SideWall.OnTriggerEnter2D: " + hitInfo.name);
         if (hitInfo.name == "Ball" || hitInfo.CompareTag("Ball"))
         {
             string wallName = transform.name;

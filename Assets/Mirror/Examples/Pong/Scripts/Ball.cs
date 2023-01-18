@@ -41,9 +41,6 @@ namespace Mirror.Examples.Pong
                 vel.y = (rb2d.velocity.y / 2.0f) + (col.collider.attachedRigidbody.velocity.y / 3.0f);
                 rb2d.velocity = vel;
             }
-            if (col.collider.CompareTag ("Wall")) {
-                Debug.Log("Ball hit wall");
-            }
         }
     }
 }
