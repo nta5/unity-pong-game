@@ -4,10 +4,12 @@
 /Library
 /UserSettings
 /Assets/Mirror
+/Assets/Mirror.meta
 /Assets/ScriptTemplates
+/Assets/ScriptTemplates.meta
 client
 /client_BurstDebugInformation_DoNotShip
 client.app/Contents
 /Builds
 *.csproj
-
+/webgl-build/*
