@@ -36,26 +36,26 @@ namespace Mirror.Examples.Pong
                 }
                 rigidbody2d.velocity = vel;
 
-                mcastAddress = IPAddress.Parse("230.0.0.1");
-                mcastPort = 11000;
-                IPEndPoint endPoint;
+                // mcastAddress = IPAddress.Parse("230.0.0.1");
+                // mcastPort = 11000;
+                // IPEndPoint endPoint;
 
-                try
-                {
-                    mcastSocket = new Socket(AddressFamily.InterNetwork,
-                                SocketType.Dgram,
-                                ProtocolType.Udp);
+                // try
+                // {
+                //     mcastSocket = new Socket(AddressFamily.InterNetwork,
+                //                 SocketType.Dgram,
+                //                 ProtocolType.Udp);
 
-                    //Send multicast packets to the listener.
-                    endPoint = new IPEndPoint(mcastAddress, mcastPort);
-                    // Debug.Log("Multicast data sent.....");
+                //     //Send multicast packets to the listener.
+                //     endPoint = new IPEndPoint(mcastAddress, mcastPort);
+                //     // Debug.Log("Multicast data sent.....");
 
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("\n" + e.ToString());
-                }
-                mcastSocket.Close();
+                // }
+                // catch (Exception e)
+                // {
+                //     Console.WriteLine("\n" + e.ToString());
+                // }
+                // mcastSocket.Close();
 
                 var pos = transform.position;
                 if (pos.y > boundY) {

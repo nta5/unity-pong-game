@@ -40,34 +40,34 @@ public class paddle1 : NetworkBehaviour
         }
         rb2d.velocity = vel;
 
-        mcastAddress = IPAddress.Parse("230.0.0.1");
-        mcastPort = 11000;
-        IPEndPoint endPoint;
+        // mcastAddress = IPAddress.Parse("230.0.0.1");
+        // mcastPort = 11000;
+        // IPEndPoint endPoint;
 
-        try
-        {
-            mcastSocket = new Socket(AddressFamily.InterNetwork,
-                           SocketType.Dgram,
-                           ProtocolType.Udp);
+        // try
+        // {
+        //     mcastSocket = new Socket(AddressFamily.InterNetwork,
+        //                    SocketType.Dgram,
+        //                    ProtocolType.Udp);
 
-            //Send multicast packets to the listener.
-            endPoint = new IPEndPoint(mcastAddress, mcastPort);
+        //     //Send multicast packets to the listener.
+        //     endPoint = new IPEndPoint(mcastAddress, mcastPort);
 
-        var position = transform.position;
-        if (Input.anyKeyDown) {
-            String msg = gameObject.name + " - Position: x = " + position.x + ", y = " + position.y;
-            mcastSocket.SendTo(ASCIIEncoding.ASCII.GetBytes(msg), endPoint);
-        }
+        // var position = transform.position;
+        // if (Input.anyKeyDown) {
+        //     String msg = gameObject.name + " - Position: x = " + position.x + ", y = " + position.y;
+        //     mcastSocket.SendTo(ASCIIEncoding.ASCII.GetBytes(msg), endPoint);
+        // }
 
-            // Debug.Log("Multicast data sent.....");
+        //     // Debug.Log("Multicast data sent.....");
 
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine("\n" + e.ToString());
-        }
+        // }
+        // catch (Exception e)
+        // {
+        //     Console.WriteLine("\n" + e.ToString());
+        // }
 
-                    mcastSocket.Close();
+        //             mcastSocket.Close();
 
 
         var pos = transform.position;
