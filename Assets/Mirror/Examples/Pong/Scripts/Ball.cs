@@ -1,4 +1,10 @@
 using UnityEngine;
+using System;
+using System.Net.Sockets;
+using System.Net;
+using System.Text;
+using System.Threading;
+using NetworkAPI;
 
 namespace Mirror.Examples.Pong
 {
@@ -7,10 +13,26 @@ namespace Mirror.Examples.Pong
         public Rigidbody2D rb2d;
 
         public GUISkin layout;
+
+        public NetworkComm networkComm;
+
         [SyncVar]
         public int PlayerScore1 = 0;
         [SyncVar]
         public int PlayerScore2 = 0;
+
+
+        void Start()
+        {
+            networkComm = new NetworkComm();
+            networkComm.MsgReceived += new NetworkComm.MsgHandler(processMsg);
+            (new Thread(new ThreadStart(networkComm.ReceiveMessages))).Start();
+        }
+
+        private void processMsg(String message)
+        {
+            // Debug.Log("From Delegate:  " + message);
+        }
 
         public override void OnStartServer()
         {
@@ -18,8 +40,14 @@ namespace Mirror.Examples.Pong
             Invoke("GoBall", 1);
         }
 
+        void Update(){
+            var position = transform.position;
+            String msg = gameObject.name + " - Position: x = " + position.x + ", y = " + position.y;
+            networkComm.sendMessage(msg);
+        }
+
         void GoBall() {
-            float rand = Random.Range (0, 2);
+            float rand = UnityEngine.Random.Range (0, 2);
             if (rand < 1) {
                 rb2d.AddForce(new Vector2 (20, -15));
             } else {

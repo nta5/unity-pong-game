@@ -15,7 +15,7 @@ namespace Mirror.Examples.Pong
         public float speed = 10.0f;
         public float boundY = 10f;
         public Rigidbody2D rigidbody2d;
-        NetworkComm networkComm;
+        public NetworkComm networkComm;
 
         void Start()
         {
@@ -33,7 +33,8 @@ namespace Mirror.Examples.Pong
         {
             var position = transform.position;
             if(Input.anyKeyDown){
-                String msg = gameObject.name + " - Position: x = " + position.x + ", y = " + position.y;
+                var playerNum = position.x > 5 ? 2 : 1;
+                String msg = "Player " + playerNum + " / " +gameObject.name + " - Position: x = " + position.x + ", y = " + position.y;
                 networkComm.sendMessage(msg);
             }
         }
